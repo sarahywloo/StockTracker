@@ -50,7 +50,15 @@
             });
 
             $routeProvider.when('/research', {
-                templateUrl: '/Presentation/ngApp/views/research.html'
+                templateUrl: '/Presentation/ngApp/views/research.html',
+                controller: StockTracker.Controllers.ResearchController,
+                controllerAs: 'controller'
+            });
+
+            $routeProvider.when('/ticker/:ticker', {
+                templateUrl: '/Presentation/ngApp/views/stockDetails.html',
+                controller: StockTracker.Controllers.StockDetailsController,
+                controllerAs: 'controller'
             });
         });
 }

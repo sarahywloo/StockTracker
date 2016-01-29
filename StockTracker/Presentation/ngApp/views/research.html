@@ -1,11 +1,14 @@
-﻿<div class="search}}">
-    <h1>Stock Tracker</h1>
-    <input ng-model="search" placeholder="Search" class="form-control"/>
-
-    <ul class="{{search ? 'fill' : ''}}">
-        <li ng-repeat="stock in controller.stocks">
-            {{stock.ticker}} {{stock.name}} {{stock.price}} {{stock.price - stock.openPrice}}
-        </li>
-    </ul>
-</div>
+﻿<div class="search">
+    <div class="{{search ? 'no-' : ''}}fill search-box">
+        <!--Debounce slows down the update-->
+        <input ng-model="search" ng-model-options="{debounce: 300}" placeholder="Search" class="form-control" ng-change="controller.updateStocks(search)"/>
+        </div>
+        <div class="{{ !search ? 'no-' : ''}}fill">
+            <ul>
+                <li ng-repeat="stock in controller.stocks">
+                    {{stock.ticker}} {{stock.name}} {{stock.price}} {{stock.price - stock.openPrice}}
+                </li>
+            </ul>
+        </div>
+    </div>
 
